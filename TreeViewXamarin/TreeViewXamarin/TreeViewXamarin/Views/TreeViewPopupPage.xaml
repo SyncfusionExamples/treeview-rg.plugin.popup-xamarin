@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" 
+                 xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:local="clr-namespace:TreeViewXamarin"
+                 xmlns:syncfusion="clr-namespace:Syncfusion.XForms.TreeView;assembly=Syncfusion.SfTreeView.XForms"
+                 x:Class="TreeViewXamarin.TreeViewPopupPage">
+
+    <pages:PopupPage.BindingContext>
+        <local:FileManagerViewModel x:Name="viewModel"/>
+    </pages:PopupPage.BindingContext>
+
+    <pages:PopupPage.Content>
+        <syncfusion:SfTreeView x:Name="treeView" ChildPropertyName="SubFiles" ItemTemplateContextType="Node" ItemsSource="{Binding ImageNodeInfo}" AutoExpandMode="AllNodesExpanded" VerticalOptions="Center" BackgroundColor="White" Margin="20,40" >
+            <syncfusion:SfTreeView.ItemTemplate>
+                <DataTemplate>
+                    <Grid x:Name="grid" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid Padding="5,5,5,5">
+                            <Image Source="{Binding Content.ImageIcon}" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="35" WidthRequest="35"/>
+                        </Grid>
+                        <Grid Grid.Column="1" RowSpacing="1" Padding="1,0,0,0" VerticalOptions="Center">
+                            <Label LineBreakMode="NoWrap" Text="{Binding Content.ItemName}" VerticalTextAlignment="Center"/>
+                        </Grid>
+                    </Grid>
+                </DataTemplate>
+            </syncfusion:SfTreeView.ItemTemplate>
+        </syncfusion:SfTreeView>
+    </pages:PopupPage.Content>
+</pages:PopupPage>
